@@ -22,7 +22,7 @@ const TaskList = () => {
       p-5"
     >
       <h1 className="text-3xl font-medium">Tasks</h1>
-      <ul className=" list-decimal w-[25rem] border h-full overflow-auto">
+      <ul className=" list-decimal  w-full max-w-[25rem] border h-full overflow-auto">
         {copy?.map((task, index) => (
           <Task task={task} key={index} />
         ))}

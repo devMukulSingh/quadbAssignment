@@ -39,7 +39,7 @@ const Form = () => {
     <div className="flex items-center justify-center ">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-3 sm:w-1/3 border px-10 py-5 rounded-md"
+        className="flex flex-col gap-3 md:w-1/3 border px-10 py-5 rounded-md"
       >
         <label htmlFor="task">Task</label>
         <input
