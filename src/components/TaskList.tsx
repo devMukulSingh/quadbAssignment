@@ -1,9 +1,9 @@
-import { useAppSelector } from '../redux/hooks'
-import Task from './Task';
+import { useAppSelector } from "../redux/hooks";
+import Task from "./Task";
 
 const TaskList = () => {
-  const { tasks } = useAppSelector(state => state);
-  const copy = [...tasks]
+  const { tasks } = useAppSelector((state) => state);
+  const copy = [...tasks];
   copy?.sort((a, b) => {
     const taskA = a.value.toUpperCase();
     const taskB = b.value.toUpperCase();
@@ -29,6 +29,6 @@ const TaskList = () => {
       </ul>
     </div>
   );
-}
+};
 
-export default TaskList
+export default TaskList;

@@ -1,40 +1,41 @@
-import  { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useAppDispatch } from "../redux/hooks";
-import { pushPendingTask,  } from "../redux/slice";
+import { pushPendingTask } from "../redux/slice";
 import toast from "react-hot-toast";
 
 type task = {
-    value:string,
-    id:number
-} | null
+  value: string;
+  id: number;
+} | null;
 
 const Form = () => {
   const dispatch = useAppDispatch();
   const initialState = {
-    value:"",
-    id:0,
-    completed:false,
-  }
+    value: "",
+    id: 0,
+    completed: false,
+  };
   const [task, setTask] = useState<task>(initialState);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (task?.value !== "") {
-    const id = Math.floor(Math.random() * 1000);
-      dispatch(pushPendingTask({
-        value:task?.value,
-        id
-      }));
+      const id = Math.floor(Math.random() * 1000);
+      dispatch(
+        pushPendingTask({
+          value: task?.value,
+          id,
+        })
+      );
       toast.success("Task added");
       setTask(initialState);
     }
   };
-  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-    
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTask({
-        id:0,
-        value:e.target.value
-    })
-  }
+      id: 0,
+      value: e.target.value,
+    });
+  };
   return (
     <div className="flex items-center justify-center ">
       <form

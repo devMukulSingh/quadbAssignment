@@ -16,13 +16,15 @@ const Dialog = ({ setOpenDialog, task }: Props) => {
   const [value, setvalue] = useState(task.value);
   const handleEdit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    //first, removing the particluar task from the state
     const filteredTask = tasks.filter((item) => item.id !== task.id);
     const newTask = {
       ...task,
       value,
     };
+    // and then adding a new task in the state
     dispatch(setTasks([...filteredTask, newTask]));
-    toast.success('Task updated');
+    toast.success("Task updated");
     setOpenDialog(false);
   };
   return (
@@ -37,12 +39,11 @@ const Dialog = ({ setOpenDialog, task }: Props) => {
             />
           </div>
           <form
-            onSubmit={ handleEdit}
+            onSubmit={handleEdit}
             className="flex flex-col gap-3  border px-3 py-1 rounded-md h-full"
           >
             <label htmlFor="task">Task</label>
             <input
-
               name="task"
               value={value}
               onChange={(e) => setvalue(e.target.value)}
