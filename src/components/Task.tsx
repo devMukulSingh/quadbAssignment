@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Itask, setTasks } from "../redux/slice";
-import { Delete } from "lucide-react";
+import { Delete, DeleteIcon, Trash } from "lucide-react";
 
 type Props = {
   task: Itask;
@@ -32,24 +32,27 @@ const Task = ({ task }: Props) => {
     dispatch(setTasks(filteredTask));
   };
   return (
-    <>
-      <div className="rounded-md justify-between px-5 py-3 flex w-full gap-10">
+    <div className="flex items-center gap-5 pl-5 pr-2 py-3 ">
+      <div className="rounded-md justify-between flex w-full gap-10 items-center ">
         <label
           htmlFor={`task.${task.id}`}
           className={`break-words ${task.completed ? "line-through" : ""}`}
         >
           {task.value}
         </label>
-          <input
-            checked={task.completed}
-            type="checkbox"
-            id={`task.${task.id}`}
-            onChange={(e) => handleChange(e)}
-          />
-
+        <input
+        className="size-5 cursor-pointer"
+          checked={task.completed}
+          type="checkbox"
+          id={`task.${task.id}`}
+          onChange={(e) => handleChange(e)}
+        />
       </div>
+      <Trash
+        onClick={handleDelete} 
+        className="cursor-pointer size-7 font-light" />
       <hr />
-    </>
+    </div>
   );
 };
 

@@ -2,21 +2,26 @@ import { Provider } from 'react-redux'
 import Form from './components/Form'
 import Header from './components/Header'
 import TaskList from './components/TaskList'
-import { store } from './redux/store'
 import { Toaster } from 'react-hot-toast'
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from 'redux-persist'
+import { store } from './redux/store'
 
 function App() {
-
+   const persistor = persistStore(store);
   return (
+    <>
     <Provider store={store}>
+      <PersistGate persistor={persistor}>
       <Toaster/>
       <div className='h-screen w-screen flex flex-col gap-10'>
           <Header />
           <Form/>
           <TaskList/>
       </div>
+      </PersistGate>
     </Provider>
-
+    </>
   )
 }
 
