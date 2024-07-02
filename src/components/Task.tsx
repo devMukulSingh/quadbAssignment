@@ -1,7 +1,7 @@
-import React, { ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Itask, setTasks } from "../redux/slice";
-import { Delete, DeleteIcon, Trash } from "lucide-react";
+import {  Trash } from "lucide-react";
 
 type Props = {
   task: Itask;

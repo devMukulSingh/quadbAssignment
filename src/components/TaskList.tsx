@@ -1,10 +1,8 @@
-import React from 'react'
 import { useAppSelector } from '../redux/hooks'
 import Task from './Task';
 
 const TaskList = () => {
   const { tasks } = useAppSelector(state => state);
-  console.log(tasks);
   const copy = [...tasks]
   copy?.sort((a, b) => {
     const taskA = a.value.toUpperCase();

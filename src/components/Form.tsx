@@ -29,7 +29,6 @@ const Form = () => {
     }
   };
   const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     
     setTask({
         id:0,
